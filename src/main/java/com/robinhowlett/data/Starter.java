@@ -217,8 +217,9 @@ public class Starter {
      * For a given Program, if it is a Coupled or Field Entry, returns the root Program number,
      * otherwise returns the Program number
      *
-     * e.g. a Coupled Entry 1, 1A, and 1X should return "1", but a Field Entry of 12F, 13F, and 14F
-     * should return "F"
+     * @param program The program "number" e.g. "1", "1A", "1X"
+     * @return The root Program "number" as a string e.g. a Coupled Entry 1, 1A, and 1X should
+     * return "1", but a Field Entry of 12F, 13F, and 14F should return "F"
      */
     public static String getEntryProgram(String program) {
         if (program != null) {
@@ -242,6 +243,8 @@ public class Starter {
 
     /**
      * Return the position at the last point of call (which should always be the finish)
+     *
+     * @param pointsOfCall The list of points of call for the race
      */
     public void updateFinishPosition(List<PointOfCall> pointsOfCall) {
         if (pointsOfCall != null && !pointsOfCall.isEmpty()) {
@@ -253,6 +256,8 @@ public class Starter {
     /**
      * Returns the official position marked on the chart or, if that is not present, the position
      * from the final point of call (the finish)
+     *
+     * @return A number representing the official finishing position
      */
     public Integer getOfficialPosition() {
         return (officialPosition != null ? officialPosition : finishPosition);
@@ -295,6 +300,11 @@ public class Starter {
     /**
      * Add the total lengths behind to the {@link Starter}'s {@link RelativePosition} for the
      * applicable {@link PointOfCall}
+     *
+     * @param column           The name of the point of call column header.
+     * @param relativePosition The relative position of the Starter at this point of call.
+     * @return The {@link Starter} with its calculated total lengths behind at this point of call.
+     * @throws PointOfCallNotFoundException If the column header value was not expected.
      */
     public Starter setTotalLengthsBehindAtPointOfCall(String column,
             RelativePosition relativePosition) throws PointOfCallNotFoundException {
@@ -314,6 +324,8 @@ public class Starter {
     /**
      * For horses that were not the leader at the point of call, the total lengths behind is taken
      * from the Past Performance Running Line Preview
+     *
+     * @param relativePosition The {@link RelativePosition} of the Starter at this point of call
      */
     private TotalLengthsBehind createTotalLengthsBehind(RelativePosition relativePosition) {
         Integer position = relativePosition.getPosition();
@@ -333,6 +345,9 @@ public class Starter {
 
     /**
      * Get the point of call that matches the specified distance (in feet)
+     *
+     * @param feet The number of feet to use to look up the point of call the corresponds.
+     * @return An {@link Optional} of {@link PointOfCall} corresponding to the feet value provided.
      */
     public Optional<PointOfCall> getPointOfCall(int feet) {
         List<PointOfCall> pointsOfCall = getPointsOfCall();
@@ -348,6 +363,10 @@ public class Starter {
 
     /**
      * Get the point of call that matches the specified description in the chart
+     *
+     * @param chartPointOfCall The value of the column text header that denotes a certain {@link
+     *                         PointOfCall}
+     * @return An {@link Optional} of {@link PointOfCall} corresponding to the text column value.
      */
     public Optional<PointOfCall> getPointOfCall(String chartPointOfCall) {
         List<PointOfCall> pointsOfCall = getPointsOfCall();

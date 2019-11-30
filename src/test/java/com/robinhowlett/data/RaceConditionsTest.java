@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import static com.robinhowlett.data.RaceRestrictions.ALL_SEXES;
 import static com.robinhowlett.data.RaceTypeNameBlackTypeBreed.RACE_TYPE_CODES;
 
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 public class RaceConditionsTest {
 

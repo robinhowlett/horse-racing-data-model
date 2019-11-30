@@ -11,7 +11,7 @@ import java.util.Collection;
 
 import static com.robinhowlett.data.DistanceSurfaceTrackRecord.TrackCondition.MUDDY;
 
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 @RunWith(Parameterized.class)

@@ -298,6 +298,11 @@ public class DistanceSurfaceTrackRecord {
          * Generate the textual descriptions of a race distance using the provided number of feet,
          * whether the distance is estimated or not, and respecting the standard for the breed in
          * question
+         *
+         * @param feet  The number of feet.
+         * @param about {@code true} if the distance was estimated; {@code false} if exact.
+         * @param breed The {@link Breed}s participating in this race.
+         * @return The derived {@link RaceDistance}.
          */
         public static RaceDistance fromFeet(int feet, boolean about, Breed breed) {
             // these will be used for the long and short textual descriptions of the race distance

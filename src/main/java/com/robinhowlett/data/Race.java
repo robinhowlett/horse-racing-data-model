@@ -9,8 +9,9 @@ public interface Race {
 
     /**
      * Round half-up and to three decimal places
-     *
      * @see #round(double, int)
+     * @param d the {@code double} to round
+     * @return a {@link BigDecimal} with up to three decimal places
      */
     static BigDecimal round(double d) {
         return round(d, 3);
@@ -18,7 +19,10 @@ public interface Race {
 
     /**
      * Round half-up and up to the defined number of decimal places. Used to try to avoid floating
-     * point woes
+     * point woes.
+     * @param d The {@code double} to round
+     * @param newScale The number of decimal places to round to
+     * @return A {@link BigDecimal} with up to the requested number of decimal places.
      */
     static BigDecimal round(double d, int newScale) {
         BigDecimal bd = new BigDecimal(Double.toString(d));
